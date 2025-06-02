@@ -8,6 +8,7 @@ public class MeterLauncher : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] private float changeRate = .213f;
     [SerializeField] private Rigidbody2D ball;
+    [SerializeField] private CameraFollow cam;
     
     
     public float multiplier = 1.5f;
@@ -44,7 +45,8 @@ public class MeterLauncher : MonoBehaviour
             ball.AddForce(direction * (slider.value * multiplier), ForceMode2D.Impulse);
             gameObject.SetActive(false);
             launcher.SetActive(false);
-            
+            cam.enabled = true;
+
         }
     }
 }
