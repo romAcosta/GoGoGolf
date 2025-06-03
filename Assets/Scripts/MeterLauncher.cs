@@ -9,7 +9,7 @@ public class MeterLauncher : MonoBehaviour
     [SerializeField] private float changeRate = .213f;
     [SerializeField] private Rigidbody2D ball;
     [SerializeField] private CameraFollow cam;
-    
+    [SerializeField] private AudioSource audio;
     
     public float multiplier = 1.5f;
     bool meterLaunched = false;
@@ -42,11 +42,13 @@ public class MeterLauncher : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !meterLaunched)
         {
             meterLaunched = true;
+            audio.Play();
+            ball.GetComponent<Ball>().Launch();
             ball.AddForce(direction * (slider.value * multiplier), ForceMode2D.Impulse);
             gameObject.SetActive(false);
             launcher.SetActive(false);
             cam.enabled = true;
-
+            
         }
     }
 }
